@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ali Yılmaz - Endüstriyel Tasarımcı ve Teknik Ressam Portfolyosu. Ürün, mekan tasarımı ve üretim teknikleri.">
+    <!-- Arama motorları için sitenizin özeti (SEO Etiketi) -->
+    <meta name="description" content="Ali Yılmaz - Endüstriyel Tasarımcı ve Teknik Ressam Portfolyosu. Ürün, mekan tasarımı ve üretim tekniklerinde profesyonel çözümler.">
     <title>Ali Yılmaz | Endüstriyel Tasarımcı</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -94,6 +95,7 @@
                 align-items: center;
                 width: 100%;
                 padding: 0.2rem 1rem;
+                cursor: pointer; /* Menü barının her yerini tıklanabilir (el simgesi) yapar */
             }
             .mobile-title {
                 color: var(--text-main);
@@ -111,6 +113,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                pointer-events: none; /* Tıklamayı direkt ebeveyne (nav-header) iletmesi için */
             }
             nav ul {
                 display: none; /* Tıklanana kadar gizli */
@@ -607,7 +610,7 @@
     <nav>
         <div class="nav-header">
             <div class="mobile-title">Menü</div>
-            <button class="hamburger" id="hamburgerBtn" aria-label="Menüyü Aç/Kapat">
+            <button class="hamburger" aria-label="Menüyü Aç/Kapat">
                 <!-- Basit bir CSS hamburger simgesi -->
                 ☰
             </button>
@@ -946,12 +949,13 @@
 
     <!-- JavaScript Mantığı -->
     <script>
-        // Hamburger Menü İşlevselliği
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        // Hamburger Menü İşlevselliği (Genişletilmiş Tıklama Alanı)
+        const navHeader = document.querySelector('.nav-header'); // Sadece üç çizgiyi değil, tüm üst barı seçtik
         const navMenu = document.getElementById('navMenu');
         const navLinks = navMenu.querySelectorAll('a');
 
-        hamburgerBtn.addEventListener('click', () => {
+        // Üst bara (.nav-header) tıklandığında menüyü aç/kapat
+        navHeader.addEventListener('click', () => {
             navMenu.classList.toggle('active');
         });
 
