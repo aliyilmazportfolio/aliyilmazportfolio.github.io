@@ -1,341 +1,272 @@
-</html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ali Yılmaz - Endüstriyel & Grafik Tasarımcı</title>
+    <title>Ali Yılmaz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg: #000000;
+            --surface: #0a0a0a;
+            --surface-hover: #121212;
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            --border: rgba(255, 255, 255, 0.1);
+            --border-hover: rgba(255, 255, 255, 0.3);
+            --font: 'Plus Jakarta Sans', -apple-system, sans-serif;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        :root {
-            --primary: #0a0e27;
-            --secondary: #1a1f3a;
-            --accent: #00d4ff;
-            --accent2: #b537f2;
-            --accent3: #ff2e97;
-            --bg: #0d1117;
-            --text: #e6edf3;
-            --text-secondary: #8b949e;
-            --card-bg: #161b22;
-            --gradient1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --gradient4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-        }
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            color: var(--text);
-            background: var(--bg);
+            font-family: var(--font);
+            background-color: var(--bg);
+            color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
-        /* Animated Background */
+
+        /* Ambient Glow Background */
         .bg-animation {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 50%;
+            left: 50%;
+            width: 80vw;
+            height: 80vw;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, transparent 60%);
             z-index: -1;
-            background: var(--bg);
-            overflow: hidden;
+            pointer-events: none;
         }
-        .bg-animation::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(180, 55, 242, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 40% 90%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
-            animation: bgMove 20s ease infinite;
-        }
-        @keyframes bgMove {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(-50px, -50px); }
-        }
-        header {
-            position: relative;
-            padding: 3rem 2rem 4rem;
-            text-align: center;
-            overflow: hidden;
-        }
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-        }
-        header h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent3) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 800;
-            letter-spacing: -2px;
-            position: relative;
-            animation: fadeInUp 1s ease;
-        }
-        header p {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            position: relative;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+
+        /* Navbar */
         nav {
-            background: rgba(22, 27, 34, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            padding: 0.5rem 0.5rem;
+            border-radius: 100px;
             z-index: 100;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            width: max-content;
+            max-width: 95vw;
+            overflow-x: auto;
         }
+        nav::-webkit-scrollbar { display: none; }
         nav ul {
-            list-style: none;
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            list-style: none;
+            gap: 0.2rem;
+            margin: 0;
+            padding: 0;
         }
         nav a {
-            color: var(--text);
+            color: var(--text-muted);
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            position: relative;
-        }
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: all 0.3s;
-            transform: translateX(-50%);
-        }
-        nav a:hover::after {
-            width: 80%;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 100px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
         }
         nav a:hover {
-            color: var(--accent);
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.1);
         }
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0rem 3rem;
-            margin-top: 2rem;
+
+        /* Header / Hero Section */
+        header {
+            min-height: 98vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            
+
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.90), rgba(0, 0, 0, 0.65)),
+                url("media/w.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 20px;
         }
-        section {
-            margin-bottom: 6rem;
-            animation: fadeInUp 1s ease;
-        }
-        h2 {
-            font-size: 3rem;
-            margin-bottom: 3rem;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+        header h1 {
+            font-size: 5.5rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #666666 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
+            animation: fadeUp 1s ease-out;
         }
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent), transparent);
-            border-radius: 2px;
+        header p {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            animation: fadeUp 1s ease-out 0.2s both;
+            font-style: oblique;
         }
-        /* About Section */
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+            border-top: 1px solid var(--border);
+            scroll-margin-top: 100px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            letter-spacing: -0.03em;
+        }
+
         .about-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            width: 100%;
         }
-        .about-main {
-            background: var(--card-bg);
-            padding: 3rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-        .about-main::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient3);
-        }
-        .about-main h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-        }
-        .about-main p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-        }
+
+        /* Eğitim: iki kart yan yana */
         .about-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.5rem;
         }
-        .about-card {
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
+        .about-main, .about-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            font-family: Arial;
+            font-size: 18px;
+            line-height: 1.5;
+            
         }
-        .about-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--gradient1);
-            transform: scaleX(0);
-            transition: transform 0.4s;
+        .about-main:hover, .about-card:hover {
+            border-color: var(--border-hover);
+            background: var(--surface-hover);
         }
-        .about-card:hover::before {
-            transform: scaleX(1);
-        }
-        .about-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(0, 212, 255, 0.3);
-            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.15);
-        }
-        .about-card h3 {
-            color: var(--accent);
+        .about-main h3, .about-card h3 {
+            font-size: 1.5rem;
             margin-bottom: 1rem;
-            font-size: 1.4rem;
+            font-weight: 600;
         }
-        .about-card p {
-            color: var(--text-secondary);
-            line-height: 1.8;
+        .about-main p, .about-card p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            
         }
+
+        /* Yalnızca Eğitim bölümü için hizalama düzeltmesi */
+        #egitim .about-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #egitim .education-title {
+            min-height: 3em;
+            line-height: 1.5;
+        }
+
+        #egitim .education-details {
+            margin-top: auto;
+        }
+
+        #egitim .education-details p {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            #egitim .education-title {
+                min-height: auto;
+            }
+
+            #egitim .education-details {
+                margin-top: 0;
+            }
+        }
+
         /* Projects Grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
         }
         .project-card {
-            background: var(--card-bg);
-            border-radius: 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
-            position: relative;
-        }
-        .project-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(180, 55, 242, 0.1));
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-        .project-card:hover::before {
-            opacity: 1;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .project-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            border-color: var(--accent);
-            box-shadow: 0 25px 70px rgba(0, 212, 255, 0.2);
+            transform: translateY(-8px);
+            border-color: rgba(255,255,255,0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
         .project-image {
             width: 100%;
             height: 280px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
             overflow: hidden;
-            background: var(--card-bg);
+            background: #111;
         }
         .project-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.6s ease;
         }
-        .project-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-        }
-        .project-image::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
-        }
-        .project-image span {
-            font-size: 4rem;
-            z-index: 1;
-            filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.5));
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
         }
         .project-content {
             padding: 2rem;
-            position: relative;
+            color: white;
         }
         .project-content h3 {
-            color: var(--text);
-            margin-bottom: 0.8rem;
-            font-size: 1.4rem;
-            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
         }
         .project-content p {
-            color: var(--text-secondary);
+            color: var(--text-muted);
             font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
         .project-tags {
             display: flex;
@@ -343,548 +274,295 @@
             gap: 0.5rem;
         }
         .project-tag {
-            background: rgba(0, 212, 255, 0.1);
-            color: var(--accent);
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
+            background: rgba(255, 136, 0, 0.396);
+            border: 1px solid var(--border);
+            padding: 0.4rem 0.8rem;
+            border-radius: 100px;
             font-size: 0.8rem;
-            font-weight: 600;
-            border: 1px solid rgba(0, 212, 255, 0.2);
+            color: #ffffff;
         }
-        /* Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-        .skill-item {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        .skill-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--gradient2);
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-        .skill-item:hover::before {
-            transform: scaleX(1);
-        }
-        .skill-item:hover {
-            background: rgba(0, 212, 255, 0.05);
-            border-color: var(--accent);
-            transform: translateY(-5px);
-        }
+
         /* Experience Timeline */
         .experience-timeline {
-            position: relative;
-            padding-left: 3rem;
-            margin-top: 3rem;
-        }
-        .experience-timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--accent), var(--accent2), transparent);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
         .timeline-item {
-            background: var(--card-bg);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
             padding: 2.5rem;
-            border-radius: 20px;
-            margin-bottom: 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            transition: all 0.3s;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -3.5rem;
-            top: 2.5rem;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: var(--accent);
-            border: 3px solid var(--bg);
-            box-shadow: 0 0 20px var(--accent);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            align-items: start;
+            transition: 0.3s;
         }
         .timeline-item:hover {
-            transform: translateX(10px);
-            border-color: var(--accent);
+            border-color: var(--border-hover);
         }
         .timeline-item h3 {
-            color: var(--text);
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            font-size: 1.5rem;
+        }
+        .company{
+            color: rgb(255, 138, 4);
+            font-size: 0.95rem;
         }
         .timeline-item .company {
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+            opacity: 0.8;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
         .timeline-item p {
-            color: var(--text-secondary);
-            line-height: 1.8;
+            color: var(--text-muted);
         }
-        /* References */
-        .references-grid {
+
+        /* Skills */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .skill-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 1rem 1.5rem;
+            border-radius: 100px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        .skill-item:hover {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        /* References & Contact */
+        .references-grid, .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
-        .reference-card {
-            background: var(--card-bg);
+        .reference-card, .contact-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
             padding: 2.5rem;
-            border-radius: 20px;
-            border-left: 4px solid var(--accent);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s;
+            transition: 0.3s;
         }
-        .reference-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.15);
+        .reference-card:hover, .contact-card:hover {
+            border-color: var(--border-hover);
+            background: var(--surface-hover);
         }
-        .reference-card h3 {
-            color: var(--text);
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
+        .reference-card h3, .contact-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
         }
         .reference-card .position {
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        .reference-card .company {
-            color: var(--text-secondary);
+            color: #fff;
+            opacity: 0.6;
+            font-size: 0.9rem;
             margin-bottom: 1rem;
         }
-        .reference-card .phone {
-            color: var(--accent2);
-            font-weight: 600;
+        .reference-card , .reference-card .phone {
+            color: var(--text-muted);
+            font-size: 0.95rem;
         }
-        /* Contact */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        .contact-card {
-            background: var(--card-bg);
-            padding: 3rem;
-            border-radius: 20px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s;
-        }
-        .contact-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.15);
-        }
-        .contact-card h3 {
-            color: var(--text);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-        .contact-card .icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        .contact-card a {
-            color: var(--accent);
+        
+        
+        .contact-card { text-align: center; }
+        .contact-card .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .contact-card a, .contact-card p {
+            color: var(--text-muted);
             text-decoration: none;
-            word-break: break-all;
-            transition: all 0.3s;
+            transition: 0.3s;
         }
-        .contact-card a:hover {
-            color: var(--accent2);
-        }
-        /* Modal */
+        .contact-card a:hover { color: #fff; }
+
+        /* Modals (Glassmorphism + Premium Dark) */
         .modal {
             display: none;
             position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 2000;
             overflow-y: auto;
-            animation: fadeIn 0.3s ease;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            padding: 2rem 1rem;
         }
         .modal-content {
-            background: var(--secondary);
-            margin: 3% auto;
+            background: #0a0a0a;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 24px;
+            max-width: 900px;
+            margin: 0 auto;
             padding: 3rem;
-            max-width: 1200px;
-            border-radius: 30px;
             position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            animation: slideUp 0.4s ease;
+            animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
         .close {
             position: absolute;
-            right: 2rem;
             top: 2rem;
-            color: var(--text-secondary);
-            font-size: 2.5rem;
-            font-weight: 300;
-            cursor: pointer;
-            transition: all 0.3s;
-            width: 50px;
-            height: 50px;
+            right: 2rem;
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #fff;
+            transition: all 0.3s ease;
         }
         .close:hover {
-            color: var(--accent3);
-            background: rgba(255, 46, 151, 0.1);
-            transform: rotate(90deg);
+            background: #fff;
+            color: #000;
         }
-        .modal-content h2 {
-            margin-bottom: 2rem;
-        }
-        .modal-content h3 {
-            color: var(--accent);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-        .modal-content h4 {
-            color: var(--text);
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        .modal-content p, .modal-content li {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-        .modal-content ul {
-            margin-left: 2rem;
-        }
-        /* Project Gallery */
+        
+        /* Modal Content Styling */
+        .modal-content h2 { margin-bottom: 1.5rem; font-size: 2.2rem; }
+        .modal-content h3 { font-size: 1.3rem; margin: 2rem 0 1rem; color: #fff; font-weight: 600;}
+        .modal-content h4 { font-size: 1rem; margin: 1.5rem 0 0.5rem; color: #fff; opacity: 0.8;}
+        .modal-content p, .modal-content ul { color: var(--text-muted); margin-bottom: 1rem; }
+        .modal-content ul { padding-left: 1.5rem; }
+        .modal-content li { margin-bottom: 0.5rem; }
+
+        /* Project Gallery inside Modal */
         .project-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             gap: 1rem;
-            margin-top: 2rem;
-            padding: 1rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 2.5rem;
         }
         .gallery-thumb {
-            width: 100%;
-            height: 120px;
-            background: var(--card-bg);
-            border-radius: 10px;
+            height: 140px;
+            border-radius: 16px;
             overflow: hidden;
             cursor: pointer;
+            border: 1px solid transparent;
             transition: all 0.3s;
-            border: 2px solid rgba(255, 255, 255, 0.05);
-            position: relative;
         }
         .gallery-thumb:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            border-color: rgba(255,255,255,0.4);
+            transform: translateY(-3px);
         }
         .gallery-thumb img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        .gallery-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(180, 55, 242, 0.3));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
 
         /* Lightbox - Full Screen */
         .lightbox-overlay {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(15px);
             z-index: 3000;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
         .lightbox-content {
-            width: 100%;
-            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 80px 20px 100px;
-            box-sizing: border-box;
+            width: 100%;
+            height: 80vh;
+            padding: 2rem;
         }
         .lightbox-img {
-            max-width: 90%;
-            max-height: 90%;
-            width: auto;
-            height: auto;
+            max-width: 100%;
+            max-height: 100%;
             object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
         .lightbox-nav {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
             display: flex;
-            gap: 20px;
-            z-index: 3002;
+            gap: 1.5rem;
+            margin-top: 1rem;
         }
         .lightbox-nav-btn {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255,255,255,0.2);
             color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            font-size: 24px;
+            width: 54px;
+            height: 54px;
+            font-size: 1.2rem;
             cursor: pointer;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s;
-            backdrop-filter: blur(10px);
         }
         .lightbox-nav-btn:hover {
-            background: rgba(0, 212, 255, 0.5);
-            transform: scale(1.1);
+            background: #fff;
+            color: #000;
         }
         .lightbox-close {
             position: absolute;
-            top: 30px;
-            right: 30px;
+            top: 2rem;
+            right: 2rem;
+            width: 54px;
+            height: 54px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255,255,255,0.2);
             color: white;
-            font-size: 40px;
-            cursor: pointer;
-            z-index: 3003;
-            width: 50px;
-            height: 50px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
+            font-size: 2rem;
+            cursor: pointer;
             transition: all 0.3s;
-            backdrop-filter: blur(10px);
         }
         .lightbox-close:hover {
-            background: rgba(255, 46, 151, 0.3);
-            transform: rotate(90deg);
+            background: #fff;
+            color: #000;
         }
         .lightbox-counter {
-            position: absolute;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 18px;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 10px 20px;
-            border-radius: 25px;
-            backdrop-filter: blur(10px);
-            z-index: 3002;
+            margin-top: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
         }
 
-        @media (max-width: 768px) {
-            .project-gallery {
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            }
-            .gallery-thumb {
-                height: 100px;
-            }
-            header h1 {
-                font-size: 2.5rem;
-                letter-spacing: -1px;
-            }
-            header p {
-                font-size: 1.1rem;
-            }
-            nav ul {
-                flex-direction: row;
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-            nav a {
-                padding: 0.4rem 0.8rem;
-            }
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            h2 {
-                font-size: 2rem;
-            }
-            .container {
-                padding: 2rem 1rem;
-            }
-            .modal-content {
-                margin: 5% 5%;
-                padding: 2rem 1.5rem;
-                max-height: 90vh;
-                overflow-y: auto;
-            }
-            .close {
-                right: 1rem;
-                top: 1rem;
-                width: 40px;
-                height: 40px;
-                font-size: 2rem;
-            }
-            .lightbox-img {
-                max-width: 95%;
-                max-height: 85%;
-            }
-            .lightbox-content {
-                padding: 60px 10px 80px;
-            }
-            .lightbox-close {
-                top: 15px;
-                right: 15px;
-                width: 45px;
-                height: 45px;
-                font-size: 32px;
-            }
-            .lightbox-nav {
-                bottom: 15px;
-                gap: 15px;
-            }
-            .lightbox-nav-btn {
-                width: 45px;
-                height: 45px;
-                font-size: 20px;
-            }
-            .lightbox-counter {
-                top: 15px;
-                font-size: 14px;
-                padding: 8px 15px;
-            }
-            .experience-timeline {
-                padding-left: 2rem;
-            }
-            .timeline-item::before {
-                left: -2.5rem;
-            }
-            .about-card, .timeline-item, .reference-card, .contact-card {
-                padding: 2rem 1.5rem;
-            }
-            .skills-grid {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            }
-            .references-grid, .contact-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 2rem;
-            }
-            header p {
-                font-size: 1rem;
-            }
-            nav ul {
-                flex-wrap: wrap;
-                gap: 0.5rem;
-            }
-            nav a {
-                font-size: 0.85rem;
-                padding: 0.4rem 0.6rem;
-            }
-            h2 {
-                font-size: 1.6rem;
-            }
-            .about-main h3, .about-card h3 {
-                font-size: 1.3rem;
-            }
-            .project-content h3 {
-                font-size: 1.2rem;
-            }
-            .modal-content h2 {
-                font-size: 1.8rem;
-            }
-            .skills-grid {
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-                gap: 1rem;
-            }
-            .skill-item {
-                padding: 1.5rem 1rem;
-                font-size: 0.9rem;
-            }
-        }
         footer {
-            background: var(--secondary);
-            color: var(--text);
             text-align: center;
-            padding: 1rem 1rem;
-            margin-top: 6rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2rem 1rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
         }
-        section {
-            scroll-margin-top: 55px;
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            header h1 { font-size: 3.5rem; }
+            .about-content, .about-grid { grid-template-columns: 1fr; }
+            .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+            .modal-content { padding: 2rem 1.5rem; margin: 1rem auto; }
+            .lightbox-content { padding: 1rem; }
+            .close { top: 1rem; right: 1rem; }
         }
-        
     </style>
 </head>
 <body>
-   
     <div class="bg-animation"></div>
-    <header  id="anasayfa">
-            <h1>ALİ YILMAZ</h1>
-            <p>Endüstriyel Tasarımcı & Grafik Tasarımcı</p>
-    </header>
+    
     <nav>
         <ul>
             <li><a href="#anasayfa">Anasayfa</a></li>
@@ -897,287 +575,253 @@
             <li><a href="#iletisim">İletişim</a></li>
         </ul>
     </nav>
+
+    <header id="anasayfa">    
+        <h1>ALİ YILMAZ</h1>
+        <p>Endüstriyel Tasarımcı</p>
+        <p style="color: rgba(255, 138, 4, 0.795);">&</p>
+        <p>Teknik Ressam</p>
+    </header>
+
     <div class="container">
         
         <section id="hakkimda">
             <h2>Hakkımda</h2>
             <div class="about-content">
                 <div class="about-main">
-                    <h3>Profil</h3>
-                    <p> 25 yaşındayım ve İstanbul'da ikamet etmekteyim. Tasarım sürecinde kullanıcı ihtiyaçları, sürdürülebilirlik ve estetik değerleri harmanlayarak yenilikçi çözümler geliştiriyorum.</p>
-                    <p>Her projeyi, kullanıcının hayatını kolaylaştıran ve çevreye duyarlı çözümler sunma fırsatı olarak görüyorum. Tasarımlarımda fonksiyonellik, estetik ve sürdürülebilirlik dengesini kurarak geleceğin ürünlerini şekillendiriyorum.</p>
+                    <p>Hacettepe Üniversitesi Endüstri Ürünleri Tasarımı bölümü mezunu 26 yaşında bir tasarımcı olarak, ürün ve mekan tasarımı süreçlerinde marka kimliği, kullanıcı ihtiyaçları, sürdürülebilirlik ve estetik değerleri harmanlayarak yenilikçi çözümler geliştiriyorum.</p>
+                    <p> Reklamcılık ve mağazacılık sektörlerinde tasarım ve üretim odaklı sac metal, ahşap, lazer kesim ve CNC abkant büküm gibi üretim tekniklerinde deneyim sahibiyim. Kariyerim boyunca perakende zincirleri için mağaza ekipmanları, firmaların fuar stantları, kurumsal müşterilerin etkinlikleri için proje tasarımı ve yönetimi (İGA-İstanbul Havalimanı 2025 Ramazan dekorları) mağaza iç mekan konseptleri ve dergi/sosyal medya için kurumsal grafik tasarımları gibi geniş bir yelpazede projeler yürüttüm. </p>
+                    <p>Amacım, malzeme bilgisi ve üretim yöntemleri konusundaki deneyimimi kullanarak, Siemens Solid Edge, AutoCad, SolidWorks ve 3ds Max, SketchUp gibi yazılımlarla estetik, üretilebilir ve kullanıcı odaklı tasarımlara imza atmaktır.</p>
                 </div>
-                <div class="about-main">
-                    <h3>Teknik Yetkinlik</h3>
-                    <p>Fuar standı tasarımı, mağaza iç mimari projelendirme, ürün teşhir sistemleri ve etkinlik konseptleri konularında deneyimim var. Büyük ölçekli projelerde de ekiplerle birlikte çalışma gerçekleştirdim.</p>
-                    <p> Reklamcılık deneyimim sayesinde üretim teknikleri, dijital baskı makinesi operatörlüğü ve atölye tecrübem mevcut.</p>
-                    <p>
-                    </p>
-                </div>
+                
             </div>
         </section>
+
         <section id="projeler">
             <h2>Projeler</h2>
             <div class="projects-grid">
-                <div class="project-card" onclick="openModal('ford')">
-                    <div class="project-image">
-                        <img src="img/image3.jpg"> 
-                    </div>
+                <div class="project-card" onclick="openModal('lv')">
+                    <div class="project-image"><img src="img/image57.jpg"></div>
                     <div class="project-content">
-                        <h3>Ford Otosan Kampüs</h3>
-                        <p>Etkinlik stant uygulaması. RAL:7016 antrasit MDFlam ahşap, pleksi logo kabartma, özel üretim mobilyalar.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Stant Tasarımı</span>
-                            <span class="project-tag">Üretim</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card" onclick="openModal('borusan')">
-                    <div class="project-image">
-                        <img src="img/image7.jpg" style="transform: scale(1.2) translateX(20px);">
-                    </div>
-                    <div class="project-content">
-                        <h3>Borusan Kar Ve Buz Etkinliği</h3>
-                        <p>Çıldır Gölü Kar ve Buz etkinliği için totemler, aksesuar standları ve alan dekorasyonu.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Etkinlik</span>
-                            <span class="project-tag">Dekorasyon</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card" onclick="openModal('diger')">
-                    <div class="project-image">
-                        <img src="img/img12.jpg"> 
-                    </div>
-                    <div class="project-content">
-                        <h3>The Ritz Carlton</h3>
-                        <p>Kurumsal marka kimliği için dış cephe tabelası üretimi</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Tabela</span>
-                            <span class="project-tag">Lüks Marka</span>
-                            <span class="project-tag">Özel Üretim</span>
-                        </div>
+                        <h3>Louis Vuitton Lansmanı</h3>
+                        <p>Lansman için özel üretim bar deski .</p></br>
+                        <div class="project-tags"><span class="project-tag">Lüks Marka</span><span class="project-tag">Özel Üretim</span></div>
                     </div>
                 </div>
 
-                
-                <div class="project-card" onclick="openModal('iga')">
-                    <div class="project-image">
-                        <img src="img/image23.jpg"> 
-                    </div>
+                <div class="project-card" onclick="openModal('worldfood')">
+                    <div class="project-image"><img src="img/img31.jpeg"></div>
                     <div class="project-content">
-                        <h3>İstanbul Airport Ramazan 2025</h3>
-                        <p>İstanbul Havalimanı ramazan etkinlikleri. 2 ay süren kapsamlı proje.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Büyük Ölçekli</span>
-                            <span class="project-tag">Havalimanı</span>
-                            <span class="project-tag">Ramazan Köyü</span>
-                        </div>
+                        <h3>Özel Tasarım Mağaza Ürünleri</h3>
+                        <p>Mağaza konseptlerine özel ürünler için tasarım ve görsel kimlik çalışması.</p>
+                        <div class="project-tags"><span class="project-tag">Mağaza</span><span class="project-tag">CAD</span><span class="project-tag">Üretim</span></div>
                     </div>
                 </div>
-                <div class="project-card" onclick="openModal('runtalya')">
-                    <div class="project-image">
-                        <img src="img/image44.jpg"> 
+
+                <div class="project-card" onclick="openModal('pg')">
+                    <div class="project-image"><img src="img/img24.jpeg"></div>
+                    <div class="project-content">
+                        <h3>Meyve Sebze Ünitesi</h3>
+                        <p>Perakende mağazalar için meyve sebze ünitesi üretimi.</p>
+                        <div class="project-tags"><span class="project-tag">Perakende</span><span class="project-tag">Teşhir</span></div>
                     </div>
+                </div>
+                
+
+                <div class="project-card" onclick="openModal('iga')">
+                    <div class="project-image"><img src="img/image23.jpg"></div>
+                    <div class="project-content">
+                        <h3>İstanbul Airport Ramazan 2025</h3>
+                        <p>2 ay süren büyük ölçekli kapsamlı proje.</p>
+                        <div class="project-tags"><span class="project-tag">Büyük</span><span class="project-tag">Havalimanı</span><span class="project-tag">Ramazan Köyü</span></div>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openModal('runtalya')">
+                    <div class="project-image"><img src="img/image44.jpg"></div>
                     <div class="project-content">
                         <h3>Runtalya 2025 Decathlon</h3>
                         <p>Antalya Maratonu için Decathlon stant üretimi ve iç dekorasyon.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Spor</span>
-                            <span class="project-tag">Stant</span>
-                        </div>
+                        <div class="project-tags"><span class="project-tag">Spor</span><span class="project-tag">Stant</span></div>
                     </div>
                 </div>
-                <div class="project-card" onclick="openModal('ritter')">
-                    <div class="project-image">
-                        <img src="img/image56.jpg">
-                    </div>
+
+                <div class="project-card" onclick="openModal('enplus')">
+                    <div class="project-image"><img src="img/img38.jpeg"></div>
                     <div class="project-content">
-                        <h3>Ritter Implants</h3>
-                        <p>Stant görselleştirme ve render çalışması.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">3D Render</span>
-                        </div>
+                        <h3>Total Energies Mağazası</h3>
+                        <p>Total energies marketi ahşap ve metal ürün çözümleri.</p>
+                        <div class="project-tags"><span class="project-tag">Market</span><span class="project-tag">Kurumsal</span><span class="project-tag">Perakende</span></div>
                     </div>
                 </div>
-                <div class="project-card" onclick="openModal('lv')">
-                    <div class="project-image">
-                        <img src="img/image57.jpg"> 
-                    </div>
-                    <div class="project-content">
-                        <h3>Louis Vuitton Lansmanı</h3>
-                        <p>Lansman için bar deski ve özel üretim dolap.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Lüks Marka</span>
-                            <span class="project-tag">Özel Üretim</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card" onclick="openModal('worldfood')">
-                    <div class="project-image">
-                        <img src="img/image59.jpg"> 
-                    </div>
-                    <div class="project-content">
-                        <h3>WorldFood 2025 Tarım Kredi</h3>
-                        <p>Fuar için ürün kimliği ve stand modellemeleri.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Fuar</span>
-                            <span class="project-tag">Modelleme</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card" onclick="openModal('pg')">
-                    <div class="project-image">
-                        <img src="img/image63.jpg">
-                    </div>
-                    <div class="project-content">
-                        <h3>P&G Ürün Teşhir Standı</h3>
-                        <p>P&G markası için ürün teşhir standı üretimi.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Perakende</span>
-                            <span class="project-tag">Teşhir</span>
-                        </div>
-                    </div>
-                </div>
-                 <div class="project-card" onclick="openModal('bosch-ankara')">
-                    <div class="project-image">
-                        <img src="img/image85.jpg"> 
-                    </div>
+
+                <div class="project-card" onclick="openModal('bosch-ankara')">
+                    <div class="project-image"><img src="img/image85.jpg"></div>
                     <div class="project-content">
                         <h3>Bosch SED Global Ankara Mağazası</h3>
                         <p>Ankara mağazası kapsamlı tasarım projesi.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Mağaza</span>
-                            <span class="project-tag">Kurumsal</span>
-                        </div>
+                        <div class="project-tags"><span class="project-tag">Mağaza</span><span class="project-tag">Kurumsal</span></div>
                     </div>
                 </div>
+
                 <div class="project-card" onclick="openModal('bosch-erzurum')">
-                    <div class="project-image">
-                        <img src="img/image70.jpg"> 
-                    </div>
+                    <div class="project-image"><img src="img/image70.jpg"></div>
                     <div class="project-content">
                         <h3>Bosch Erzurum Aşkale Mağazası</h3>
                         <p>Anahtar teslim mağaza kurulumu, iç mimari ve üretim.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Mağaza</span>
-                            <span class="project-tag">İç Mimari</span>
-                        </div>
+                        <div class="project-tags"><span class="project-tag">Mağaza</span><span class="project-tag">İç Mimari</span></div>
                     </div>
                 </div>
+
                 <div class="project-card" onclick="openModal('siemens-maltepe')">
-                    <div class="project-image">
-                        <img src="img/img3.jpg"> 
-                    </div>
+                    <div class="project-image"><img src="img/img3.jpg"></div>
                     <div class="project-content">
                         <h3>Siemens Maltepe ALC Mağazası</h3>
                         <p>ALC mağazası tasarım ve uygulama.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Mağaza</span>
-                            <span class="project-tag">İç Mimari</span>
-                        </div>
+                        <div class="project-tags"><span class="project-tag">Mağaza</span><span class="project-tag">İç Mimari</span></div>
                     </div>
                 </div>
-                <div class="project-card" onclick="openModal('siemens-pos')">
-                    <div class="project-image">
-                        <img src="img/image66.jpg"> 
+
+                <div class="project-card" onclick="openModal('ford')">
+                    <div class="project-image"><img src="img/image3.jpg"></div>
+                    <div class="project-content">
+                        <h3>Ford Otosan Kampüs</h3>
+                        <p>Etkinlik stant uygulaması. RAL:7016 antrasit MDFlam ahşap, pleksi logo kabartma...</p>
+                        <div class="project-tags"><span class="project-tag">Stant Tasarımı</span><span class="project-tag">Üretim</span></div>
                     </div>
+                </div>
+                
+                <div class="project-card" onclick="openModal('borusan')">
+                    <div class="project-image"><img src="img/image7.jpg" style="transform: scale(1.2) translateX(20px);"></div>
+                    <div class="project-content">
+                        <h3>Borusan Kar Ve Buz Etkinliği</h3>
+                        <p>Çıldır Gölü Kar ve Buz etkinliği için totemler, aksesuar standları ve alan dekorasyonu.</p>
+                        <div class="project-tags"><span class="project-tag">Etkinlik</span><span class="project-tag">Dekorasyon</span></div>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openModal('ritter')">
+                    <div class="project-image"><img src="img/image56.jpg"></div>
+                    <div class="project-content">
+                        <h3>Fuar Standı Tasarımları & 3D Görselleştirme</h3>
+                        <p>Stant görselleştirme ve render çalışması.</p>
+                        <div class="project-tags"><span class="project-tag">3D Render</span><span class="project-tag">Stant Tasarım</span></div>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openModal('diger')">
+                    <div class="project-image"><img src="img/img12.jpg"></div>
+                    <div class="project-content">
+                        <h3>The Ritz Carlton</h3>
+                        <p>Kurumsal marka kimliği için dış cephe tabelası üretimi</p>
+                        <div class="project-tags"><span class="project-tag">Tabela</span><span class="project-tag">Lüks Marka</span><span class="project-tag">Özel Üretim</span></div>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openModal('siemens-pos')">
+                    <div class="project-image"><img src="img/image66.jpg"></div>
                     <div class="project-content">
                         <h3>Siemens POS Standları</h3>
                         <p>Siemens sunumu için POS stand tasarımları.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">POS</span>
-                            <span class="project-tag">Sunum</span>
-                        </div>
+                        <div class="project-tags"><span class="project-tag">POS</span><span class="project-tag">Sunum</span></div>
                     </div>
                 </div>
-               <div class="project-card" onclick="openModal('enplus')">
-                    <div class="project-image">
-                        <img src="img/image13.jpg"> 
-                    </div>
-                    <div class="project-content">
-                        <h3>ENPLUS Kahve Festivali</h3>
-                        <p>Kahve festivali için konteyner stant tasarımı.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Festival</span>
-                            <span class="project-tag">Konteyner</span>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="project-card" onclick="openModal('grafik')">
-                    <div class="project-image">
-                        <img src="img/image2.jpg"> 
-                    </div>
+                    <div class="project-image"><img src="img/image2.jpg"></div>
                     <div class="project-content">
                         <h3>3D & Grafik Çalışmaları</h3>
-                        <p>3D's Max ve SolidWorks modelleme çalışmaları.</p>
-                        <p>Logo tasarımları ve afiş çalışmaları.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">3D</span>
-                            <span class="project-tag">CAD</span>
-                            <span class="project-tag">Logo</span>
-                            <span class="project-tag">Grafik</span>
-                        </div>
+                        <p>3D's Max ve SolidWorks modelleme çalışmaları. Logo tasarımları ve afiş çalışmaları.</p>
+                        <div class="project-tags"><span class="project-tag">3D</span><span class="project-tag">CAD</span><span class="project-tag">Logo</span><span class="project-tag">Grafik</span></div>
                     </div>
                 </div>
+
             </div>
         </section>
+
         <section id="deneyim">
             <h2>İş Geçmişi</h2>
             <div class="experience-timeline">
                 <div class="timeline-item">
-                    <h3>Mimari Tasarımcı & Fuar Standı Tasarımcısı</h3>
-                    <div class="company">ONS Tanıtım & Reklamcılık</div>
-                    <p>Fuar standı ve sahne tasarımı alanında sektörün büyük firmalarından ONS reklam bünyesinde mimari tasarımcı olarak fuar standı tasarımlarında ve üretiminde görev aldım.</p>
+                    <div>
+                        <h3>TEKNİK TASARIMCI & ENDÜSTRİYEL TASARIMCI</h3>
+                        <div class="company">TAB25 Shopfitting</div>
+                    </div>
+                    <p>Mağaza dekorasyonu ve perakende market ekipmanları sektöründe üretim
+                    gerçekleştiren Tab25 firmasında özel
+                    tasarım ürünler; market rafı, bantlı kasa, karşılama bankosu ve ürün teşhir
+                    stantlarının tasarımından, üretim teknik resimlerinin hazırlanmasına kadar
+                    görev aldım.</p>
                 </div>
                 <div class="timeline-item">
-                    <h3>Grafik Tasarımcı</h3>
-                    <div class="company">EMT Reklam</div>
-                    <p>Reklamcılık sektöründe yoğun iş temposunda marka afişleri konusunda tasarım ve baskı aşamalarını yönettim.</p>
+                    <div>
+                        <h3>ENDÜSTRİYEL TASARIMCI</h3>
+                        <div class="company">ONS Tanıtım & Reklamcılık</div>
+                    </div>
+                    <p>Etkinlik standı ve mağazacılık alanında ONS reklamcılık bünyesinde endüstriyel tasarımcı olarak ürün teşhir standı tasarımlarında ve üretiminde görev aldım. BSH
+                    (Bosch, Siemens, Profilo) mağazalarının iç mimari dekorasyonu ve teşhir mobilyalarının
+                    üretim ve kurulumlarında sorumluluk aldım.
+                    </p>
                 </div>
                 <div class="timeline-item">
-                    <h3>Stajyer Tasarımcı</h3>
-                    <div class="company">ISIN Rezistans</div>
+                    <div>
+                        <h3>TEKNİK RESSAM (STAJ)</h3>
+                        <div class="company">ENG Havacılık</div>
+                    </div>
+                    <p>Savunma Sanayi sektöründe yoğun iş temposunda üretim parçalarının teknik resimlerinin oluşturulmasında görev aldım.</p>
+                </div>
+                <div class="timeline-item">
+                    <div>
+                        <h3> TEKNİK RESSAM (STAJ)</h3>
+                        <div class="company">ISIN Rezistans</div>
+                    </div>
                     <p>Endüstriyel rezistans üretimi konusunda Solidworks programı kullanılarak kalıp modellemesi ve imalatına dair görev aldım.</p>
                 </div>
             </div>
         </section>
+
         <section id="beceriler">
             <h2>Beceriler</h2>
             <div class="skills-grid">
                 <div class="skill-item">MS Office</div>
                 <div class="skill-item">SolidWorks</div>
                 <div class="skill-item">AutoCAD</div>
+                <div class="skill-item">Siemens Solid Edge</div>
+                <div class="skill-item">CAD/Cam</div>
                 <div class="skill-item">3D's Max</div>
+                <div class="skill-item">Mağaza Tasarımı</div>
                 <div class="skill-item">SketchUp</div>
                 <div class="skill-item">Photoshop</div>
                 <div class="skill-item">Illustrator</div>
                 <div class="skill-item">Grafik Tasarım</div>
                 <div class="skill-item">Stant Tasarımı</div>
-                <div class="skill-item">Mimari Tasarım </div>
+                <div class="skill-item">Mimari Tasarım</div>
                 <div class="skill-item">Ürün Tasarımı</div>
                 <div class="skill-item">Üretim Teknikleri</div>
                 <div class="skill-item">Corona Renderer</div>
                 <div class="skill-item">3D Modelleme</div>
-
             </div>
-            
         </section>
+
         <section id="egitim">
             <h2>Eğitim</h2>
             <div class="about-grid">
                 <div class="about-card">
-                    <h3>Hacettepe Üniversitesi</h3>
-                    <p><strong>Endüstri Ürünleri Tasarımı</strong></p>
-                    <p>2019 - 2022</p>
+                    <h3 class="education-title">Hacettepe Üniversitesi</h3>
+                    <div class="education-details">
+                        <p><strong style="color: rgb(255, 138, 4);opacity: 0.8;">Endüstri Ürünleri Tasarımı</strong></p><p>2019 - 2022</p>
+                    </div>
                 </div>
                 <div class="about-card">
-                    <h3>İMMİB Erkan Avcı Mesleki ve Teknik Anadolu Lisesi</h3>
-                    <p><strong>Endüstri Ürünleri Tasarımı</strong></p>
-                    <p>2014 - 2018</p>
+                    <h3 class="education-title">İMMİB Erkan Avcı Mesleki ve<br>Teknik Anadolu Lisesi</h3>
+                    <div class="education-details">
+                        <p><strong style="color: rgb(255, 138, 4);opacity: 0.8;">Endüstri Ürünleri Tasarımı</strong></p><p>2014 - 2018</p>
+                    </div>
                 </div>
             </div>
         </section>
+        
+
         <section id="referanslar">
             <h2>Referanslar</h2>
             <div class="references-grid">
@@ -1202,11 +846,24 @@
                 <div class="reference-card">
                     <h3>Eyüp Ercan</h3>
                     <div class="position">Kurucu</div>
-                    <div class="company">EMT Reklam</div>
+                    <div class="company">EMT Reklamcılık</div>
                     <div class="phone">0532 135 3426</div>
+                </div>
+                <div class="reference-card">
+                    <h3>Berk Gümüşhan</h3>
+                    <div class="position">Teknik Büro Şefi</div>
+                    <div class="company">TAB25 Shopfitting</div>
+                    <div class="phone">0542 385 9090</div>
+                </div>
+                <div class="reference-card">
+                    <h3>Özgür Can Bürüç</h3>
+                    <div class="position">Ar-Ge Sorumlusu</div>
+                    <div class="company">TAB25 Shopfitting</div>
+                    <div class="phone">0541 504 7535</div>
                 </div>
             </div>
         </section>
+
         <section id="iletisim">
             <h2>İletişim</h2>
             <div class="contact-grid">
@@ -1228,18 +885,23 @@
             </div>
         </section>
     </div>
+
+    <!-- Modal Yapısı -->
     <div id="projectModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
+            <span class="close" onclick="closeModal()">✕</span>
             <div id="modalBody"></div>
         </div>
     </div>
+
     <footer>
-        <p>&copy; 2025 Ali Yılmaz - Tüm Hakları Saklıdır</p>
+        <p>&copy; 2025 Ali Yılmaz - Tüm hakları saklı değildir.</p>
         <br>
-        <img src="media/heart.png" style="width:44px; height:auto; vertical-align:middle;">
+        <img src="media/heart.png" style="width:44px; height:auto; vertical-align:middle;" onerror="this.style.display='none'">
     </footer>
-        <script>
+
+    <!-- JavaScript Mantığı (Korundu ve Güncellendi) -->
+    <script>
         const projects = {
             ford: {
                 title: 'Ford Otosan Kampüs Etkinliği',
@@ -1269,20 +931,19 @@
                         <li>Alan dekorasyonu elemanları - Atmosfer yaratıcı objeler</li>
                         <li>Donmuş göl üzerinde kullanılmak üzere dayanıklı yapılar</li>
                     </ul>
-                    <p><strong>Özel Koşullar:</strong> Ekstrem soğuk hava koşulları, buz üzerinde kurulum, dayanıklılık odaklı tasarım</p>
                 `
             },
             enplus: {
-                title: 'ENPLUS Kahve Festivali Konteyner Standı',
+                title: 'Total Energies Mağazası',
                 content: `
                     <h3>Proje Detayları</h3>
-                    <p>Kahve festivali için ENPLUS firmasına özel konteyner stant tasarımı ve uygulaması yapıldı.</p>
+                    <p>Total Mağazası için market rafları ve ürün standları çözümleri gerçekleştirildi </p>
                     <h4>Özellikler:</h4>
                     <ul>
-                        <li>Konteyner bazlı modüler tasarım</li>
-                        <li>Festival alanına uygun estetik yaklaşım</li>
-                        <li>Fonksiyonel ürün teşhir alanları</li>
-                        <li>Taşınabilir ve kurulumu kolay sistem</li>
+                        <li>Yerleşim planı ve röleve</li>
+                        <li>Ürün Ağacı BIM/BOM oluşturma,</li>
+                        <li>CAD Modelleme</li>
+                        <li>Teknik Resim oluşturma</li>
                     </ul>
                 `
             },
@@ -1303,29 +964,7 @@
                                 <li>Ebru Atölyesi - Su üzerine sanat</li>
                             </ul>
                         </li>
-                        <li><strong>Eğlence Alanları:</strong>
-                            <ul>
-                                <li>İllüzyon Evi - İnteraktif deneyim</li>
-                                <li>Dijital Galaksi - Teknoloji entegrasyonu</li>
-                                <li>Uzay Yolculuğu - Tematik alan</li>
-                                <li>Hacivat-Karagöz - Gölge oyunu maske atölyesi</li>
-                            </ul>
-                        </li>
-                        <li><strong>Diğer Alanlar:</strong>
-                            <ul>
-                                <li>Trambolin Alanı Podyumu - İstanbul Meydanı</li>
-                                <li>Işıklı Totemler - 7 adet (4 İngilizce, 3 Türkçe) - Çap: 4m</li>
-                                <li>Ana Giriş Kapıları - Kapı tabelaları</li>
-                                <li>Kerabanağa Restoranı - Dış Hatlar dekorasyonu</li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <h4>Teknik Detaylar:</h4>
-                    <ul>
-                        <li>İç yerleşim planları ve elektrik planlaması</li>
-                        <li>Üretim dosyaları ve render çalışmaları</li>
-                        <li>Montaj, onarım ve bakım hizmetleri</li>
-                        <li>Kapsamlı proje yönetimi - 2 ay süre</li>
+                        <li><strong>Eğlence Alanları:</strong> İllüzyon Evi, Dijital Galaksi, Uzay Yolculuğu, Hacivat-Karagöz maske atölyesi</li>
                     </ul>
                 `
             },
@@ -1340,22 +979,21 @@
                         <li>İç dekorasyon tasarımı - Spor teması</li>
                         <li>İç yerleşim planları - Fonksiyonel alan kullanımı</li>
                         <li>Elektrik planlaması - Aydınlatma ve enerji</li>
-                        <li>Üretim dosyaları ve render çalışmaları</li>
-                        <li>Marka kimliği entegrasyonu</li>
                     </ul>
                 `
             },
             ritter: {
-                title: 'Ritter Implants Stant Tasarımı',
+                title: 'Fuar Standı Tasarımları & 3D Görselleştirme',
                 content: `
                     <h3>Proje Detayları</h3>
-                    <p>Ritter Implants standı için profesyonel görselleştirme ve 3D render çalışması yapıldı.</p>
+                    <p>Ritter Implants, WorldFood 2025 Tarım Kredi Kooperatifleri ve ENPLUS Kahve Festivali projeleri tasarlandı. Her proje için markanın ihtiyaçlarına ve etkinlik konseptine uygun tasarım ve görselleştirme çalışmaları gerçekleştirildi.</p>
                     <h4>Çalışma Detayları:</h4>
                     <ul>
+                        <li>Fuar ve etkinlik standı tasarımı</li>
                         <li>3D modelleme ve görselleştirme</li>
                         <li>Fotorealistik render çıktıları</li>
-                        <li>Sunum materyali hazırlama</li>
-                        <li>Medikal sektöre uygun temiz tasarım dili</li>
+                        <li>Ürün teşhir alanları ve fonksiyonel yerleşim çözümleri</li>
+                        <li>Görsel sunum ve proje sunum materyallerinin hazırlanması</li>
                     </ul>
                 `
             },
@@ -1367,37 +1005,36 @@
                     <h4>Üretilen Ürünler:</h4>
                     <ul>
                         <li>Özel tasarım bar deski - Premium malzeme ve işçilik</li>
-                        <li>Özel üretim dükkan dolabı - Lüks görünüm</li>
                         <li>Lüks marka kimliğine uygun tasarım dili</li>
-                        <li>Yüksek kalite standartları ve detay işçiliği</li>
                     </ul>
                 `
             },
             worldfood: {
-                title: 'WorldFood 2025 - Tarım Kredi Kooperatifleri',
+                title: 'Özel Tasarım Mağaza Ürünleri',
                 content: `
                     <h3>Proje Detayları</h3>
-                    <p>WorldFood 2025 fuarı için Tarım Kredi Kooperatifleri markasına özel çalışma.</p>
+                    <p>Çeşitli markaların mağaza konseptlerine özel tasarım ürün çözümleri.</p>
                     <h4>Çalışma Kapsamı:</h4>
                     <ul>
-                        <li>Ürün kimliği tasarımı - Görsel dil oluşturma</li>
-                        <li>Fuar standı 3D modellemeleri</li>
-                        <li>Görsel sunum ve render çalışmaları</li>
-                        <li>Tarımsal ürün teşhir sistemleri</li>
+                        <li>CAD Modelleme</li>
+                        <li>Metal ve Ahşap Üretim</li>
+                        <li>Teknik Resim oluşturma</li>
+                        <li>Ürün Ağacı BIM/BOM oluşturma,</li>
+                        <li>Malzeme seçimi</li>
+                        <li>Üretim Teknikler</li>
                     </ul>
                 `
             },
             pg: {
-                title: 'P&G Ürün Teşhir Standı',
+                title: 'Meyve Sebze Ünitesi',
                 content: `
                     <h3>Proje Detayları</h3>
-                    <p>P&G markası için perakende mağazalarda kullanılmak üzere ürün teşhir standı tasarlandı ve üretildi.</p>
+                    <p>Perakende mağazalarda kullanılmak üzere meyve sebze ünitesi tasarlandı ve üretildi.</p>
                     <h4>Özellikler:</h4>
                     <ul>
                         <li>Marka kimliğine uygun tasarım</li>
                         <li>Fonksiyonel ürün yerleştirme sistemi</li>
                         <li>Perakende ortamına uygun dayanıklılık</li>
-                        <li>Kolay montaj ve demontaj</li>
                     </ul>
                 `
             },
@@ -1406,14 +1043,11 @@
                 content: `
                     <h3>Proje Detayları</h3>
                     <p>Bosch SED Global Ankara mağazası için kurumsal kimliğe uygun kapsamlı tasarım ve uygulama projesi.</p>
-                    <h4>Proje Özellikleri:</h4>
                     <ul>
                         <li>Kurumsal mağaza konsepti geliştirme</li>
                         <li>İç mimari tasarım ve detaylandırma</li>
                         <li>Uygulama projeleri ve çizimler</li>
                         <li>Özel üretim mobilya ve sistemler</li>
-                        <li>Marka standartlarına uygun detaylandırma</li>
-                        <li>Premium kalite işçilik</li>
                     </ul>
                 `
             },
@@ -1422,23 +1056,10 @@
                 content: `
                     <h3>Proje Detayları</h3>
                     <p>Bosch Erzurum Aşkale mağazası için anahtar teslim mağaza kurulum projesi gerçekleştirildi.</p>
-                    <h4>Proje Kapsamı:</h4>
                     <ul>
                         <li><strong>Röleve Çalışması:</strong> Mevcut alan ölçümleri ve analizi</li>
                         <li><strong>Ürün Teşhir Standları:</strong> Özel tasarım ve üretim</li>
-                        <li><strong>İç Dekorasyon:</strong> Mağaza atmosfer tasarımı</li>
-                        <li><strong>Mimari Tasarım:</strong> Tüm iç mimari projelendirme</li>
-                        <li><strong>Tadilat İşleri:</strong> Yapısal değişiklikler</li>
-                        <li><strong>Elektrik Planları:</strong> Aydınlatma ve güç sistemi</li>
-                        <li><strong>Üretim:</strong> Ahşap işleri, demir doğrama, CNC kesim</li>
                         <li><strong>Kurulum:</strong> Anahtar teslim montaj ve devreye alma</li>
-                    </ul>
-                    <h4>İmalat Çıktıları:</h4>
-                    <ul>
-                        <li>Özel üretim mobilyalar</li>
-                        <li>Ürün teşhir üniteleri</li>
-                        <li>Dekoratif duvar elemanları</li>
-                        <li>Özel ışıklı sistemler</li>
                     </ul>
                 `
             },
@@ -1447,14 +1068,10 @@
                 content: `
                     <h3>Proje Detayları</h3>
                     <p>Siemens İstanbul Maltepe ALC mağazası için kapsamlı iç mimari ve tasarım projesi.</p>
-                    <h4>Çalışma Kapsamı:</h4>
                     <ul>
                         <li>Mağaza konsept tasarımı</li>
                         <li>İç mimari uygulama projesi</li>
                         <li>Ürün teşhir sistemleri tasarımı</li>
-                        <li>İmalat ve üretim çalışmaları</li>
-                        <li>Montaj ve kurulum</li>
-                        <li>Marka standartlarına uygunluk</li>
                     </ul>
                 `
             },
@@ -1463,12 +1080,10 @@
                 content: `
                     <h3>Proje Detayları</h3>
                     <p>Siemens sunumları için özel POS (Point of Sale) standları tasarlandı.</p>
-                    <h4>Çalışma Detayları:</h4>
                     <ul>
                         <li>Ürün sunum standları</li>
                         <li>Marka görsel kimliği entegrasyonu</li>
                         <li>Modüler ve fonksiyonel tasarım</li>
-                        <li>Elektronik ürünler için özel tasarım</li>
                     </ul>
                 `
             },
@@ -1476,8 +1091,7 @@
                 title: 'The Ritz Carlton Otel Tabela',
                 content: `
                     <h3>Proje Detayları</h3>
-                    <p>İstanbul Beşiktaş'ta bulunan The Ritz-Carlton Oteli için, kurumsal marka kimliğine uygun dış cephe tabelası üretimi gerçekleştirilmiştir. Dış cephe tabelası otelin lüks ve zarif imajını etkili bir şekilde yansıtmaktadır.</p>
-                    <h4>Teknik Özellikler:</h4>
+                    <p>İstanbul Beşiktaş'ta bulunan The Ritz-Carlton Oteli için, kurumsal marka kimliğine uygun dış cephe tabelası üretimi gerçekleştirilmiştir.</p>
                     <ul>
                         <li>Yüksek kaliteli kompozit malzeme seçimi</li>
                         <li>Işıklı cnc pleksi harf alüminyum çerçeve</li>
@@ -1486,209 +1100,57 @@
                 `
             },
             grafik: {
-                title: '3D Modelleme&Grafik Tasarım Çalışmaları',
+                title: '3D Modelleme & Grafik Tasarım Çalışmaları',
                 content: `
                     <h3>3D Proje Detayları</h3>
-                    <p>Çeşitli projeler için hazırlanan 3 boyutlu modelleme ve CAD çalışmaları.</p>
-                    <h4>Kullanılan Programlar ve Uygulamalar:</h4>
                     <ul>
-                        <li><strong>3D's Max & Corona:</strong>
-                            <ul>
-                                <li>Mimari görselleştirme çalışmaları</li>
-                                <li>Fotorealistik render üretimi</li>
-                                <li>İç mekan tasarım ve görselleştirme</li>
-                            </ul>
-                        </li>
-                        <li><strong>SolidWorks:</strong>
-                            <ul>
-                                <li>Teknik CAD parça çizimleri</li>
-                                <li>Mekanik modelleme</li>
-                                <li>Ürün tasarımı ve prototipleme</li>
-                                <li>İmalat için teknik çizimler</li>
-                            </ul>
-                        </li>
+                        <li><strong>3D's Max & Corona:</strong> Mimari görselleştirme, iç mekan tasarım</li>
+                        <li><strong>SolidWorks:</strong> Teknik CAD çizimleri, mekanik modelleme</li>
                     </ul>
                     <h3>Grafik Proje Detayları</h3>
-                    <p>Çeşitli markalar için hazırlanan grafik tasarım ve görsel kimlik çalışmaları.</p>
-                    <h4>Çalışma Alanları:</h4>
                     <ul>
-                        <li><strong>Logo Tasarımı:</strong>
-                            <ul>
-                                <li>Kurumsal kimlik logoları</li>
-                                <li>Marka karakteri geliştirme</li>
-                                <li>Logo manual hazırlama</li>
-                            </ul>
-                        </li>
-                        <li><strong>Afiş Tasarımı:</strong>
-                            <ul>
-                                <li>Etkinlik afişleri</li>
-                                <li>Tanıtım ve kampanya materyalleri</li>
-                                <li>Dijital ve baskı formatları</li>
-                            </ul>
-                        </li>
-                        <li><strong>Marka Kimliği:</strong>
-                            <ul>
-                                <li>Görsel dil geliştirme</li>
-                                <li>Kurumsal tasarım sistemleri</li>
-                                <li>Baskı tasarımları</li>
-                                <li>Dijital medya içerikleri</li>
-                            </ul>
-                        </li>
+                        <li><strong>Logo Tasarımı:</strong> Kurumsal kimlik logoları</li>
+                        <li><strong>Afiş Tasarımı:</strong> Etkinlik ve kampanya materyalleri</li>
                     </ul>
                 `
             }
         };
-        const projectGalleries = {
-            'ford': [
-                'img/image3.jpg',
-                'img/image4.jpg',
-                'img/image5.jpg',
-                'img/image6.jpg'
-            ],
-            borusan: [
-                'img/image7.jpg',
-                'img/image8.jpg',
-                'img/image10.jpg',
-                'img/image11.jpg',
-                'img/image9.jpg'
-            ],
-            enplus: [
-                'img/image12.jpg',
-                'img/image13.jpg',
-                'img/image14.jpg'
-            ],
-            iga: [
-                'img/image15.jpg',
-                'img/image16.jpg',
-                'img/image21.jpg',
-                'img/image26.jpg',
-                'img/image28.jpg',
-                'img/image30.jpg',
-                'img/image39.jpg',
-                'img/image41.jpg',
-                'img/image22.jpg',
-                'img/image32.jpg',
-                'img/image17.jpg',
-                'img/image31.jpg',
-                'img/image35.jpg',
-                'img/image37.jpg',
-                'img/image36.jpg',
-                'img/image42.jpg',
-                'img/image43.jpg'
-            ],
-            runtalya: [
-                'img/image44.jpg',
-                'img/image45.jpg',
-                'img/image46.jpg',
-                'img/image47.jpg',
-                'img/image48.jpg',
-                'img/image49.jpg',
-                'img/image50.jpg',
-                'img/image51.jpg',
-                'img/image52.jpg',
-                'img/image53.jpg'
-            ],
-            ritter: [
-                'img/image54.jpg',
-                'img/image55.jpg',
-                'img/image56.jpg'
-            ],
-            lv: [
-                'img/image57.jpg',
-                'img/img5.jpg',
-                'media/image001.jpg'
-            ],
-            worldfood: [
-                'img/image59.jpg',
-                'img/image60.jpg',
-                'img/image61.jpg',
-                'img/image62.jpg',
-                'img/image003.jpg',
-                'img/image002.jpg'
-            ],
-            pg: [
-                'img/image63.jpg',
-                'img/image64.jpg'
-            ],
-            'siemens-pos': [
-                'img/image65.jpg',
-                'img/image66.jpg'
-                
-            ],
-            'bosch-erzurum': [
-                'img/image67.jpg',
-                'img/image68.jpg',
-                'img/image69.jpg',
-                'img/image70.jpg',
-                'img/image71.jpg',
-                'img/image004.jpg',
-                'img/image005.jpg',
-                'img/images006.jpg'
-            ],
-            'siemens-maltepe': [
-                'img/image007.jpg',
-                'img/image008.jpg',
-                'img/img3.jpg',
-                'img/image75.jpg',
-                'img/image77.jpg',
-                'img/image79.jpg',
-                'img/image80.jpg',
-                'img/kapi-ek1.jpg',
-                'img/image81.jpg'
 
-            ],
-            'bosch-ankara': [
-                'img/image82.jpg',
-                'img/image84.jpg',
-                'img/image85.jpg',
-                'img/image86.jpg',
-                'img/image87.jpg',
-                'img/image88.jpg',
-                'img/img7.jpg',
-                'media/1.jpg',
-                'img/img6.jpg'
-            ],
-            'diger': [
-                'img/img11.jpg',
-                'img/img12.jpg',
-                'img/img13.jpg',
-            ],
-            'grafik': [
-                'img/image89.jpg',
-                'img/image90.jpg',
-                'img/image91.jpg',
-                'img/image93.jpg',
-                'img/image94.jpg',
-                'img/image95.jpg',
-                'img/image96.jpg',
-                'img/image97.jpg',
-                'img/image98.jpg',
-                'img/image99.jpg',
-                'img/image100.jpg',
-                'img/image101.jpg'
-            ]
+        const projectGalleries = {
+            'ford': ['img/image3.jpg', 'img/image4.jpg', 'img/image5.jpg', 'img/image6.jpg'],
+            'borusan': ['img/image7.jpg', 'img/image8.jpg', 'img/image10.jpg', 'img/image11.jpg', 'img/image9.jpg'],
+            'enplus': ['img/img33.jpeg', 'img/img34.jpeg','img/img35.jpeg','img/img36.jpeg','img/img37.jpeg','img/img38.jpeg'],
+            'iga': ['img/image15.jpg', 'img/image16.jpg', 'img/image21.jpg', 'img/image26.jpg', 'img/image28.jpg', 'img/image30.jpg', 'img/image39.jpg', 'img/image41.jpg', 'img/image22.jpg', 'img/image32.jpg', 'img/image17.jpg', 'img/image31.jpg', 'img/image35.jpg', 'img/image37.jpg', 'img/image36.jpg', 'img/image42.jpg', 'img/image43.jpg'],
+            'runtalya': ['img/image44.jpg', 'img/image45.jpg', 'img/image46.jpg', 'img/image47.jpg', 'img/image48.jpg', 'img/image49.jpg', 'img/image50.jpg', 'img/image51.jpg', 'img/image52.jpg', 'img/image53.jpg'],
+            'ritter': ['img/image54.jpg', 'img/image55.jpg', 'img/image56.jpg', 'img/image59.jpg', 'img/image60.jpg', 'img/image61.jpg', 'img/image62.jpg', 'img/image003.jpg', 'img/image002.jpg', 'img/image12.jpg', 'img/image13.jpg', 'img/image14.jpg'],
+            'lv': ['img/image57.jpg', 'img/img5.jpg', 'media/image001.jpg'],
+            'worldfood': ['img/img25.jpeg', 'img/img26.jpeg', 'img/img27.jpeg', 'img/img28.jpeg', 'img/img29.jpeg', 'img/img30.jpeg', 'img/img31.jpeg', 'img/img32.jpeg'],
+            'pg': ['img/img20.jpeg', 'img/img21.jpeg','img/img22.jpeg','img/img23.jpeg','img/img24.jpeg'],
+            'siemens-pos': ['img/image65.jpg', 'img/image66.jpg'],
+            'bosch-erzurum': ['img/image67.jpg', 'img/image68.jpg', 'img/image69.jpg', 'img/image70.jpg', 'img/image71.jpg', 'img/image004.jpg', 'img/image005.jpg', 'img/images006.jpg'],
+            'siemens-maltepe': ['img/image007.jpg', 'img/image008.jpg', 'img/img3.jpg', 'img/image75.jpg', 'img/image77.jpg', 'img/image79.jpg', 'img/image80.jpg', 'img/kapi-ek1.jpg', 'img/image81.jpg'],
+            'bosch-ankara': ['img/image82.jpg', 'img/image84.jpg', 'img/image85.jpg', 'img/image86.jpg', 'img/image87.jpg', 'img/image88.jpg', 'img/img7.jpg', 'media/1.jpg', 'img/img6.jpg'],
+            'diger': ['img/img11.jpg', 'img/img12.jpg', 'img/img13.jpg'],
+            'grafik': ['img/image89.jpg', 'img/image90.jpg', 'img/image91.jpg', 'img/image93.jpg', 'img/image94.jpg', 'img/image95.jpg', 'img/image96.jpg', 'img/image97.jpg', 'img/image98.jpg', 'img/image99.jpg', 'img/image100.jpg', 'img/image101.jpg']
         };
 
         function openModal(projectId) {
             const modal = document.getElementById('projectModal');
             const modalBody = document.getElementById('modalBody');
             const project = projects[projectId];
-            
             if (!project) return;
             
             const gallery = projectGalleries[projectId] || [];
             let galleryHTML = '';
             
             if (gallery.length > 0) {
-                galleryHTML = '<h3 style="margin-top: 0; margin-bottom: 1.5rem; color: var(--accent);">Proje Görselleri</h3>';
-                galleryHTML += '<div class="project-gallery" style="margin-bottom: 2rem; border-top: none; padding-top: 0;">';
+                galleryHTML = '<h3 style="margin-top: 0;">Proje Görselleri</h3>';
+                galleryHTML += '<div class="project-gallery">';
                 for (let i = 0; i < gallery.length; i++) {
                     const imgSrc = gallery[i];
                     galleryHTML += `
                         <div class="gallery-thumb" onclick="openLightbox('${projectId}', ${i})">
-                            <img src="${imgSrc}" alt="Project Image ${i + 1}" 
-                                 onerror="this.style.display='none'; 
-                                          this.parentElement.innerHTML='<div class=\\'gallery-placeholder\\'>Görsel ${i + 1}</div>';">
+                            <img src="${imgSrc}" alt="Project Image" onerror="this.parentElement.style.display='none'">
                         </div>
                     `;
                 }
@@ -1700,7 +1162,6 @@
                 ${galleryHTML}
                 ${project.content}
             `;
-            
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
@@ -1709,9 +1170,7 @@
             document.getElementById('projectModal').style.display = 'none';
             document.body.style.overflow = 'auto';
             const existingLightbox = document.getElementById('dynamic-lightbox');
-            if (existingLightbox) {
-                existingLightbox.remove();
-            }
+            if (existingLightbox) existingLightbox.remove();
         }
 
         window.onclick = function(event) {
@@ -1720,9 +1179,7 @@
 
         function openLightbox(projectId, index) {
             const existingLightbox = document.getElementById('dynamic-lightbox');
-            if (existingLightbox) {
-                existingLightbox.remove();
-            }
+            if (existingLightbox) existingLightbox.remove();
             
             const images = projectGalleries[projectId] || [];
             if (images.length === 0) return;
@@ -1731,32 +1188,29 @@
             lightbox.id = 'dynamic-lightbox';
             lightbox.className = 'lightbox-overlay';
             lightbox.innerHTML = `
-                <span class="lightbox-close" onclick="closeDynamicLightbox()">&times;</span>
+                <span class="lightbox-close" onclick="closeDynamicLightbox()">✕</span>
                 <div class="lightbox-content">
                     <img class="lightbox-img" src="${images[index]}" alt="Project Image">
                 </div>
                 ${images.length > 1 ? `
                     <div class="lightbox-nav">
-                        <button class="lightbox-nav-btn" onclick="changeDynamicImage(-1, '${projectId}', ${index})">&#10094;</button>
-                        <button class="lightbox-nav-btn" onclick="changeDynamicImage(1, '${projectId}', ${index})">&#10095;</button>
+                        <button class="lightbox-nav-btn" onclick="changeDynamicImage(-1, '${projectId}',${index})">❮</button>
+                        <button class="lightbox-nav-btn" onclick="changeDynamicImage(1, '${projectId}',${index})">❯</button>
                     </div>
-                    <div class="lightbox-counter">${index + 1} / ${images.length}</div>
+                    <div class="lightbox-counter">${index + 1} /${images.length}</div>
                 ` : ''}
             `;
+            
             document.body.appendChild(lightbox);
             lightbox.style.display = 'flex';
             document.body.style.overflow = 'hidden';
-            
             lightbox.dataset.projectId = projectId;
             lightbox.dataset.currentIndex = index;
         }
 
         function closeDynamicLightbox() {
             const lightbox = document.getElementById('dynamic-lightbox');
-            if (lightbox) {
-                lightbox.remove();
-                document.body.style.overflow = 'auto';
-            }
+            if (lightbox) lightbox.remove();
         }
 
         function changeDynamicImage(direction, projectId, currentIndex) {
@@ -1765,7 +1219,6 @@
             
             const images = projectGalleries[projectId] || [];
             let newIndex = parseInt(currentIndex) + direction;
-            
             if (newIndex < 0) newIndex = images.length - 1;
             if (newIndex >= images.length) newIndex = 0;
             
@@ -1773,40 +1226,26 @@
             imgElement.src = images[newIndex];
             
             const counter = lightbox.querySelector('.lightbox-counter');
-            if (counter) {
-                counter.textContent = `${newIndex + 1} / ${images.length}`;
-            }
+            if (counter) counter.textContent = `${newIndex + 1} / ${images.length}`;
             
             const navButtons = lightbox.querySelectorAll('.lightbox-nav-btn');
             if (navButtons.length >= 2) {
                 navButtons[0].setAttribute('onclick', `changeDynamicImage(-1, '${projectId}', ${newIndex})`);
                 navButtons[1].setAttribute('onclick', `changeDynamicImage(1, '${projectId}', ${newIndex})`);
             }
-            
             lightbox.dataset.currentIndex = newIndex;
         }
 
         document.addEventListener('keydown', function(event) {
             const lightbox = document.getElementById('dynamic-lightbox');
             if (lightbox) {
-                if (event.key === 'Escape') {
-                    closeDynamicLightbox();
-                } else if (event.key === 'ArrowLeft') {
-                    const projectId = lightbox.dataset.projectId;
-                    const currentIndex = parseInt(lightbox.dataset.currentIndex);
-                    changeDynamicImage(-1, projectId, currentIndex);
-                } else if (event.key === 'ArrowRight') {
-                    const projectId = lightbox.dataset.projectId;
-                    const currentIndex = parseInt(lightbox.dataset.currentIndex);
-                    changeDynamicImage(1, projectId, currentIndex);
-                }
+                if (event.key === 'Escape') closeDynamicLightbox();
+                else if (event.key === 'ArrowLeft') changeDynamicImage(-1, lightbox.dataset.projectId, lightbox.dataset.currentIndex);
+                else if (event.key === 'ArrowRight') changeDynamicImage(1, lightbox.dataset.projectId, lightbox.dataset.currentIndex);
             } else if (event.key === 'Escape') {
                 closeModal();
             }
         });
     </script>
-    
 </body>
-
-
-
+</html>
